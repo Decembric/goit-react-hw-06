@@ -6,6 +6,7 @@ import css from "./ContactList.module.css"
 const ContactList = () => {
   
   const contacts = useSelector(state => state.contacts)
+  
   return (
     <ul className={css.nameList}>
       {contacts.map((contact) => (

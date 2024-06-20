@@ -1,15 +1,15 @@
-import { removeContact } from "../../redux/store"
-import { useDispatch, useSelector } from "react-redux"
+
+import { useDispatch } from "react-redux"
 import css from "./Contact.module.css"
 import { FaUser, FaPhone } from "react-icons/fa"
+import { removeContact } from "../../redux/contactsSlice"
 const Contact = ({ data }) => {
-  const value = useSelector((state => state.filters.name))
+ console.log(data)
   const dispatch = useDispatch()
   const handleRemoveClick = () => {
 dispatch(removeContact(data))
   }
-  console.log(value)
-  return (
+   return (
     <>
       <div className={css.userData}>
         <div className={css.userName}>
