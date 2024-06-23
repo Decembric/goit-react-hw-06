@@ -1,26 +1,16 @@
-const initialState = {
-  contacts: [
-  { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-  { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-  { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-  { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-]
-	,
-  filters: {
-		name: ""
-	}
-}
+import { createSlice } from '@reduxjs/toolkit';
+import { INITAL_STATE } from './contactsSlice';
 
-export const filtersReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "filters/contactFilter": {
-      return {
-        ...state,
-        filters: state.filters.toLowerCase().includes
-      }
-    }
-      default: return state
-  }
-}
+const filtersSlice = createSlice({
+  name: 'filters',
+  initialState: INITAL_STATE.filters,
+  reducers: {
+    changeFilter(state, action) {
+      state.name = action.payload;
+    },
+  },
+});
 
-
+export const setFilter = state => state.filters.name;
+export const { changeFilter } = filtersSlice.actions;
+export const filtersReducer = filtersSlice.reducer;

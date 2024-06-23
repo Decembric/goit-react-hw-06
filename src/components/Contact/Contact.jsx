@@ -1,15 +1,17 @@
 
-import { useDispatch } from "react-redux"
-import css from "./Contact.module.css"
-import { FaUser, FaPhone } from "react-icons/fa"
-import { removeContact } from "../../redux/contactsSlice"
+import { FaUser, FaPhone } from "react-icons/fa";
+import css from "./Contact.module.css";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
+
 const Contact = ({ data }) => {
- console.log(data)
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
   const handleRemoveClick = () => {
-dispatch(removeContact(data))
-  }
-   return (
+    dispatch(deleteContact(data.id));
+  };
+
+  return (
     <>
       <div className={css.userData}>
         <div className={css.userName}>
@@ -24,10 +26,8 @@ dispatch(removeContact(data))
       <button type="button" onClick={handleRemoveClick}>
         REMOVE
       </button>
-
     </>
-  )
-}
+  );
+};
 
-export default Contact
-
+export default Contact;
